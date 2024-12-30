@@ -1,7 +1,4 @@
 name: Terraform CI Pipeline
-env:
-  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
 on:
   workflow_dispatch:
@@ -21,7 +18,8 @@ jobs:
       TF_LOG: DEBUG  # Enable detailed Terraform logging
       ACTIONS_RUNNER_DEBUG: "true"  # Enable runner debug logging
       ACTIONS_STEP_DEBUG: "true"  # Enable step debug logging
-
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     steps:
       # Step 1: Checkout repository code
       - name: Checkout Code
